@@ -1,32 +1,33 @@
-class VigenereCipher :
+class VigenereCipher:
     def __init__(self):
-        pass
+        pass  # No need to put methods here, they should be at the class level
 
-    def vigenere_encrypt(self,plain_text,key):
-        encrypt_text=""
-        key_index=0
+    def vigenere_encrypt(self, plain_text, key):
+        encrypted_text = ""
+        key_index = 0
         for char in plain_text:
             if char.isalpha():
-                key_shift=ord(key[key_index % len(key)].upper())-ord ('A')
+                key_shift = ord(key[key_index % len(key)].upper()) - ord('A')
                 if char.isupper():
-                    encrypted_text+=chr((ord (char)-ord ('A')+ key_shift)% 26 + ord('A'))
+                    encrypted_text += chr((ord(char) - ord('A') + key_shift) % 26 + ord('A'))
                 else:
-                    encrypted_text+=chr((ord (char)-ord ('a')+ key_shift)% 26 + ord('a'))
-                key_index+=1    
+                    encrypted_text += chr((ord(char) - ord('a') + key_shift) % 26 + ord('a'))
+                key_index += 1
             else:
-                encrypted_text=char
+                encrypted_text += char
         return encrypted_text
-    def vigenere_decrypt (self,encrypted_text,key):
-        decrypted_text=""
-        key_index=0
+
+    def vigenere_decrypt(self, encrypted_text, key):
+        decrypted_text = ""
+        key_index = 0
         for char in encrypted_text:
             if char.isalpha():
-                key_shift=ord(key[key_index % len(key)].upper()) -ord ('A')
+                key_shift = ord(key[key_index % len(key)].upper()) - ord('A')
                 if char.isupper():
-                    decrypted_text+=chr((ord (char)-ord ('A')- key_shift)% 26 + ord('A'))
+                    decrypted_text += chr((ord(char) - ord('A') - key_shift) % 26 + ord('A'))
                 else:
-                    decrypted_text+=chr((ord (char)-ord ('a')- key_shift)% 26 + ord('a'))
-                key_index+=1    
+                    decrypted_text += chr((ord(char) - ord('a') - key_shift) % 26 + ord('a'))
+                key_index += 1
             else:
-                decrypted_text=char
+                decrypted_text += char
         return decrypted_text
